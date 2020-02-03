@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <li v-for="item in items">
+            {{item.message}}
+        </li>
+    </ul>
+</div>
+<!--vm.items.push({message:"少年歌行"})-->
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: "#app",
+        data: {
+             items: [
+                 {message: "鬼灭之刃"},
+                 {message: "我们无法一起学习"},
+                 {message: "一拳超人"}
+        ]
+        }
+    });
+</script>
+</body>
+</html>
