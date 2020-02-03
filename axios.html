@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <li>名称： {{info.name}}</li>
+        <li>名称： {{info.address.street}}</li>
+        <li><a v-bind:href="info.url">{{info.url}}</a></li>
+    </ul>
+</div>
+
+<!--vm.items.push({message:"少年歌行"})-->
+<script src="vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: "#app",
+        // data(){函数对象，（）是函数，{}是对象。
+        data(){
+            //数据承载模型，model
+            return {
+                info: {
+                    name: "",
+                    url: "",
+                    address: {
+                        street: "",
+                        city: "",
+                        country: ""
+                    }
+                }
+            }
+        },
+       mounted(){
+            //链式编程
+            axios.get("data.json")
+           .then(response =>this.info=response.data);
+       }
+    });
+</script>
+</body>
+</html>
