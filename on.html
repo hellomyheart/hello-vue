@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <button v-on:click="sayHi();">提交</button>
+</div>
+
+<!--vm.items.push({message:"少年歌行"})-->
+<script src="vue.js"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            message: "Hello Vue"
+        },
+        methods: {
+            sayHi: function (event) {
+                alert(this.message);
+            }
+        }
+    });
+</script>
+</body>
+</html>
