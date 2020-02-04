@@ -1,23 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+
 <body>
-<div id="app">
-第一个vue应用程序，{{message}}
-</div>
+    <div id="app">
+        <!-- v-for="name in names"从names里面拿数据，并循环，item名为name,
+        v-bind:name="name"，对于每一个item,把名为name（第一个，父组件的名字）的属性绑定到name(第二个，拿过来的值) -->
+        <my-li v-for="name in names" v-bind:name="name"></my-li>
+    </div>
 
 
-<script src="https://cdn.jsdelivr.net/npm/vue"></script>
-<script type="text/javascript">
-    var vm=new Vue({
-        el: "#app",
-        data: {
-            message: "Hello Vue"
-        }
-    });
-</script>
+    <script src="vue.js"></script>
+    <script type="text/javascript">
+        Vue.component("my-li", {
+            props: ['name'],
+            template: "<li style='color: red;'>{{name}}</li>"
+        });
+
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                names: ["炭智郎","米豆子","无心","雷无桀"]
+            }
+        });
+    </script>
 </body>
+
 </html>
