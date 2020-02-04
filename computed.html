@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!-- 计算属性，第一次计算，之后缓存，不再计算。调用不加（） -->
+    <div>获取当前时间的方法：{{getCurrentTimel()}}</div>
+    <div>获取当前时间的属性：{{getCurrentTimel2}}</div>
+
+</div>
+
+<!--vm.items.push({message:"少年歌行"})-->
+<script src="vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: "#app",
+        methods: {
+            getCurrentTimel: function () {
+                return Date.now();
+            }
+        },
+        // 计算属性
+        computed: {
+            getCurrentTimel2: function(){
+                return Date.now();
+            }
+        }
+    });
+</script>
+</body>
+</html>
