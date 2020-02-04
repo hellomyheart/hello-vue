@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <!--双向绑定-->
+    单行文本：<input v-model="message" type="text"/>单行文本是: {{message}}
+    <br/> <br/>
+    多行文本：<textarea v-model="message"></textarea> 多行文本是： {{message}}
+    <br/> <br/>
+    单复选框：<input type="checkbox" id="checkbox" v-model="checked"/>
+    <label for="checkbox">{{checked}}</label>
+    <br/> <br/>
+    多复选框：
+    <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+    <label for="jack">Jack</label>
+    <input type="checkbox" id="john" value="John" v-model="checkedNames">
+    <label for="john">John</label>
+    <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+    <label for="mike">Mike</label>
+    <span>选中的值：{{checkedNames}}</span>
+    <br/> <br/>
+    单选按钮：
+    <input type="radio" id="one" value="One" v-model="picked">
+    <label for="one">One</label>
+    <input type="radio" id="two" value="Two" v-model="picked">
+    <label for="two">Two</label>
+    <span>选中的值：{{picked}}</span>
+    <br/> <br/>
+    下拉框：
+    <select v-model="selected">
+        <option disabled value="">请选择</option>
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+    </select>
+    <span>选中的值：{{selected}}</span>
+<!--    如果 v-model 表达式的初始值未能匹配任何选项，-->
+<!--    <select> 元素将被渲染为“未选中”状态。 -->
+<!--    在 iOS 中，这会使用户无法选择第一个选项。-->
+<!--    因为这样的情况下，iOS 不会触发 change 事件。-->
+<!--    因此，更推荐像上面这样提供一个值为空的禁用选项。-->
+</div>
+
+<!--vm.items.push({message:"少年歌行"})-->
+<script src="vue.js"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            checked: false,
+            message: "Hello Vue",
+            checkedNames: [],
+            picked: '',
+            selected: ''
+        }
+    });
+</script>
+</body>
+</html>
