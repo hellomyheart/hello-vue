@@ -9,7 +9,7 @@
     <div id="app">
         <todo>
             <todo-title1 slot="todo-title" v-bind:title="title"></todo-title1>
-            <!-- 注意，这里的v-for="(item,index)是按模板定义的顺序来的，类似于形参 -->
+            <!-- 注意，这里的v-for="(item,index)是按模板定义的顺序来的，类似于形参-->
             <todo-items1 slot="todo-items" v-for="(item,index) in items" v-bind:index="index" v-bind:item="item" v-on:remove2="removeitems(index)"></todo-items1>
         </todo>
     </div>
