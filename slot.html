@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <todo>
+            <todo-title1 slot="todo-title" v-bind:title="title"></todo-title1>
+            <!-- 注意，这里的v-for="(item,index)是按模板定义的顺序来的，类似于形参 -->
+            <todo-items1 slot="todo-items" v-for="(item,index) in items" v-bind:index="index" v-bind:item="item" v-on:remove2="removeitems(index)"></todo-items1>
+        </todo>
+    </div>
+
+    <!--vm.items.push({message:"少年歌行"})-->
+    <script src="vue.js"></script>
+    <script type="text/javascript">
+        Vue.component("todo", {
+            template: "<div>\
+                <slot name='todo-title'></slot>\
+                <ul>\
+                    <slot name='todo-items'></slot>\
+                </ul>\
+            <div>\
+            "
+        });
+
+        Vue.component("todo-title1",{
+            props: ["title"],
+            template: "<h1>{{title}}</h1>"
+        });
+
+        Vue.component("todo-items1",{
+            props: ["item","index"],
+            template: "<li>{{index + 1}}.{{item}} <button @click='remove1'>删除</button></li>",
+            methods: {
+                remove1: function(index){
+                    this.$emit("remove2",index);
+                }
+            }
+        });
+
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                title: "测试",
+                items: ["鬼灭之刃","少年歌行","一人之下"]
+            },
+            methods: {
+                removeitems: function(index){
+                // 从下标哪个开始，删除几个
+                this.items.splice(index,1);
+            }
+            }
+           
+        });
+    </script>
+</body>
+
+</html>
